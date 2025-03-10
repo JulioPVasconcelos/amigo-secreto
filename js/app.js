@@ -8,6 +8,7 @@ function adicionar() {
   } else {
     if (listaAmigos.includes(nomeAmigo)) {
       alert("O nome " + nomeAmigo + " já foi adicionado");
+      return;
     } else {
       listaAmigos.push(nomeAmigo);
       document.getElementById("lista-amigos").innerHTML = listaAmigos;
