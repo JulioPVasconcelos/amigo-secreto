@@ -6,17 +6,20 @@ function adicionar() {
   if (nomeAmigo == "") {
     alert("Digite um nome");
     return;
-  } else {
-    if (listaAmigos.includes(nomeAmigo)) {
-      alert("O nome " + capitalize(nomeAmigo) + " já foi adicionado");
-      return;
-    } else {
-      listaAmigos.push(nomeAmigo);
-      document.getElementById("lista-amigos").innerHTML +=
-        capitalize(nomeAmigo) + ", ";
-      document.getElementById("nome-amigo").value = "";
-    }
   }
+  if (listaAmigos.includes(nomeAmigo)) {
+    alert("O nome " + capitalize(nomeAmigo) + " já foi adicionado");
+    return;
+  }
+  if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(nomeAmigo)) {
+    alert("O nome não pode conter caracteres especiais");
+    return;
+  }
+
+  listaAmigos.push(nomeAmigo);
+  document.getElementById("lista-amigos").innerHTML +=
+    capitalize(nomeAmigo) + ", ";
+  document.getElementById("nome-amigo").value = "";
 }
 
 function sortear() {
