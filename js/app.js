@@ -2,16 +2,18 @@ let listaAmigos = [];
 
 function adicionar() {
   let nomeAmigo = document.getElementById("nome-amigo").value;
+  nomeAmigo = nomeAmigo.toUpperCase();
   if (nomeAmigo == "") {
     alert("Digite um nome");
     return;
   } else {
     if (listaAmigos.includes(nomeAmigo)) {
-      alert("O nome " + nomeAmigo + " já foi adicionado");
+      alert("O nome " + capitalize(nomeAmigo) + " já foi adicionado");
       return;
     } else {
       listaAmigos.push(nomeAmigo);
-      document.getElementById("lista-amigos").innerHTML = listaAmigos;
+      document.getElementById("lista-amigos").innerHTML +=
+        capitalize(nomeAmigo) + ", ";
       document.getElementById("nome-amigo").value = "";
     }
   }
@@ -29,16 +31,16 @@ function sortear() {
     if (i == listaAmigos.length - 1) {
       listaSorteio.innerHTML +=
         "O amigo secreto de " +
-        listaAmigos[i] +
+        capitalize(listaAmigos[i]) +
         " é " +
-        listaAmigos[0] +
+        capitalize(listaAmigos[0]) +
         "<br>";
     } else {
       listaSorteio.innerHTML +=
         "O amigo secreto de " +
-        listaAmigos[i] +
+        capitalize(listaAmigos[i]) +
         " é " +
-        listaAmigos[i + 1] +
+        capitalize(listaAmigos[i + 1]) +
         "<br>";
     }
   }
@@ -60,4 +62,8 @@ function embaralha(lista) {
       lista[indice - 1],
     ];
   }
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
